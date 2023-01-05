@@ -1,0 +1,15 @@
+D:\C#\WpfOJT\WpfOJT.DAO\bin\Debug\net6.0\WpfOJT.DAO.deps.json
+D:\C#\WpfOJT\WpfOJT.DAO\bin\Debug\net6.0\WpfOJT.DAO.dll
+D:\C#\WpfOJT\WpfOJT.DAO\bin\Debug\net6.0\WpfOJT.DAO.pdb
+D:\C#\WpfOJT\WpfOJT.DAO\bin\Debug\net6.0\WpfOJT.Entities.dll
+D:\C#\WpfOJT\WpfOJT.DAO\bin\Debug\net6.0\WpfOJT.Entities.pdb
+D:\C#\WpfOJT\WpfOJT.DAO\obj\Debug\net6.0\WpfOJT.DAO.csproj.AssemblyReference.cache
+D:\C#\WpfOJT\WpfOJT.DAO\obj\Debug\net6.0\WpfOJT.DAO.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#\WpfOJT\WpfOJT.DAO\obj\Debug\net6.0\WpfOJT.DAO.AssemblyInfoInputs.cache
+D:\C#\WpfOJT\WpfOJT.DAO\obj\Debug\net6.0\WpfOJT.DAO.AssemblyInfo.cs
+D:\C#\WpfOJT\WpfOJT.DAO\obj\Debug\net6.0\WpfOJT.DAO.csproj.CoreCompileInputs.cache
+D:\C#\WpfOJT\WpfOJT.DAO\obj\Debug\net6.0\WpfOJT.DAO.csproj.CopyComplete
+D:\C#\WpfOJT\WpfOJT.DAO\obj\Debug\net6.0\WpfOJT.DAO.dll
+D:\C#\WpfOJT\WpfOJT.DAO\obj\Debug\net6.0\refint\WpfOJT.DAO.dll
+D:\C#\WpfOJT\WpfOJT.DAO\obj\Debug\net6.0\WpfOJT.DAO.pdb
+D:\C#\WpfOJT\WpfOJT.DAO\obj\Debug\net6.0\ref\WpfOJT.DAO.dll

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\img_arrow.png" />
+    <None Remove="Assets\img_exit.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="EPPlus" Version="6.1.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+    <PackageReference Include="MvvmLight" Version="5.4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WpfOJT.DAO\WpfOJT.DAO.csproj" />
+    <ProjectReference Include="..\WpfOJT.Entities\WpfOJT.Entities.csproj" />
+    <ProjectReference Include="..\WpfOJT.Services\WpfOJT.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\img_arrow.png" />
+    <Resource Include="Assets\img_exit.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,90 @@
+﻿<Window x:Class="WpfOJT.App.Views.Account.Login"
+        x:Name="LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfOJT.App.Views.Account"
+        mc:Ignorable="d"
+        xmlns:helper="clr-namespace:WpfOJT.App.Helpers"
+        Title="Login" Height="450" Width="600"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Viewbox/>
+        <materialDesign:Card
+            Height="750"
+            Margin="20"
+            Padding="8"
+            HorizontalAlignment="Stretch">
+            <Grid Grid.Row="1" Margin="4,2,4,2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <TextBlock
+                        Text="Login"
+                        FontSize="25"
+                        FontWeight="Bold"
+                        Margin="16,16,12,8"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="350"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontSize="18" Text="Email" Grid.Row="0" VerticalAlignment="Bottom" Margin="16,0,12,33"  Grid.Column="0"/>
+                        <TextBox
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                 Grid.Row="0"
+                                 Height="40"
+                                 Text="{Binding Path=loginModel.Email, Mode=TwoWay}"
+                                 VerticalAlignment="Center"
+                                 Padding="10,5,10,5"
+                                 Width="300"
+                                 HorizontalAlignment="Right"
+                                 VerticalContentAlignment="Center"
+                                 VerticalScrollBarVisibility="Auto"
+                                 Grid.Column="1"/>
+                        <TextBlock FontSize="18" Text="Password" Grid.Row="1" Margin="16,0,12,8" VerticalAlignment="Center"  Grid.Column="0"/>
+                        <PasswordBox
+                                 helper:PasswordHelper.Attach="True"
+                                 helper:PasswordHelper.Password="{Binding Path=loginModel.Password,Mode=TwoWay}"
+                                 Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                                 Grid.Row="1"
+                                 Height="40"
+                                 Padding="10,5,10,5"
+                                 VerticalContentAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Width="300"
+                                 HorizontalAlignment="Right"
+                                 Grid.Column="1"/>
+                        <Button Grid.Row="2"
+                                Grid.Column="1"
+                                Command="{Binding LoginCommand}"
+                                CommandParameter="{Binding ElementName=LoginWindow}"
+                                Width="120"
+                                HorizontalAlignment="Right"
+                                Height="40"
+                                Background="Blue"
+                                FontSize="17"
+                                Content="Login"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</Window>
