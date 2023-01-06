@@ -169,8 +169,7 @@ namespace WpfOJT.DAO.Repositories
         /// <summary>
         /// Upload data from excel file
         /// </summary>
-        /// <param name="r"></param>
-        /// <param name="c"></param>
+        /// <param name="rows"></param>
         /// <param name="id"></param>
         /// <param name="sheet"></param>
         /// <returns>The <see cref="ResponseModel"/>.</returns>

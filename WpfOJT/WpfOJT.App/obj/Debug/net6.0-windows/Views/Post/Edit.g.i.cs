@@ -57,7 +57,7 @@ namespace WpfOJT.App.Views.Post {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfOJT.App;component/views/post/edit.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfOJT.App;V1.0.0.0;component/views/post/edit.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\Post\Edit.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -57,7 +57,7 @@ namespace WpfOJT.App.Views.User {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfOJT.App;component/views/user/create.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfOJT.App;V1.0.0.0;component/views/user/create.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\User\Create.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

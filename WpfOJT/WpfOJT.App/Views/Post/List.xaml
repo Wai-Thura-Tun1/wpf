@@ -44,7 +44,7 @@
                             Margin="0,0,10,0"
                             Content="Create New Post"
                             HorizontalAlignment="Right"
-                            Command="{Binding Path=CreatePostCommand}"
+                            Command="{Binding Path=CreateCommand}"
                             Background="Blue"
                             />
                     <TextBox Grid.Column="1"

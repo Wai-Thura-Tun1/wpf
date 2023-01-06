@@ -64,7 +64,7 @@ namespace WpfOJT.App.Views.User {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfOJT.App;component/views/user/list.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfOJT.App;V1.0.0.0;component/views/user/list.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\User\List.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
