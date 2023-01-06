@@ -33,6 +33,7 @@ namespace WpfOJT.App.Views.Post
             {
                 this.NavigationService.Navigate(new WpfOJT.App.Views.Post.Edit(postModel.Id));
             }
+
         }
 
         /// <summary>

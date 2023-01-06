@@ -44,7 +44,7 @@
                             Margin="0,0,10,0"
                             Content="Create New User"
                             HorizontalAlignment="Right"
-                            Command="{Binding Path=CreateUserCommand}"/>
+                            Command="{Binding Path=CreateCommand}"/>
                     <TextBox Grid.Column="1"
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                  HorizontalAlignment="Right"

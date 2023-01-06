@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Media3D;
 using WpfOJT.App.Helpers;
 using WpfOJT.App.ViewModels;
 using WpfOJT.DAO.Helpers;
@@ -40,7 +41,7 @@ namespace WpfOJT.App.Views.User
         /// <summary>
         /// Define the _createUserCommand
         /// </summary>
-        private ICommand _createUserCommand;
+        private ICommand _createCommand;
 
         /// <summary>
         /// Define the _cancelCommand
@@ -55,25 +56,25 @@ namespace WpfOJT.App.Views.User
         /// <summary>
         /// Define the _deleteUserCommand
         /// </summary>
-        private ICommand _deleteUserCommand;
+        private ICommand _deleteCommand;
 
         /// <summary>
         /// Define the _changePassCommand
         /// </summary>
-        private ICommand _changePassCommand;
+        private ICommand _changePasswordCommand;
 
         /// <summary>
         /// Define the ChangePassCommand
         /// </summary>
-        public ICommand ChangePassCommand
+        public ICommand ChangePasswordCommand
         {
             get
             {
-                if (_changePassCommand == null)
+                if (_changePasswordCommand == null)
                 {
-                    _changePassCommand = new RelayCommand((param) => ChangedPass(),null);
+                    _changePasswordCommand = new RelayCommand((param) => ChangedPassword(),null);
                 }
-                return _changePassCommand;
+                return _changePasswordCommand;
             }
         }
 
@@ -84,11 +85,11 @@ namespace WpfOJT.App.Views.User
         {
             get
             {
-                if (_deleteUserCommand == null)
+                if (_deleteCommand == null)
                 {
-                    _deleteUserCommand = new RelayCommand((param) => Delete((int)param), null);
+                    _deleteCommand = new RelayCommand((param) => Delete((int)param), null);
                 }
-                return _deleteUserCommand;
+                return _deleteCommand;
             }
             
         }
@@ -126,15 +127,15 @@ namespace WpfOJT.App.Views.User
         /// <summary>
         /// Define the CreateUserCommand
         /// </summary>
-        public ICommand CreateUserCommand
+        public ICommand CreateCommand
         {
             get
             {
-                if (_createUserCommand == null)
+                if (_createCommand == null)
                 {
-                    _createUserCommand = new RelayCommand((param) => CreateUser(),null);
+                    _createCommand = new RelayCommand((param) => CreateUser(),null);
                 }
-                return _createUserCommand;
+                return _createCommand;
             }
         }
 
@@ -158,6 +159,9 @@ namespace WpfOJT.App.Views.User
         /// </summary>
         public UserModel User { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public UserListViewModel()
         {
             _userService = new UserService();
@@ -168,6 +172,10 @@ namespace WpfOJT.App.Views.User
             GetAll();
         }
 
+        /// <summary>
+        /// Constructor for User Edit Page
+        /// </summary>
+        /// <param name="id"></param>
         public UserListViewModel(int id)
         {
             _userService = new UserService();
@@ -183,7 +191,8 @@ namespace WpfOJT.App.Views.User
         /// </summary>
         private void Cancel()
         {
-            MainViewModel.Instance.PagePath = NavigationHelper.USER_LIST;
+            var model = _userService.Get(loginId);
+            MainViewModel.Instance.PagePath = (model.Role == 1 ? NavigationHelper.USER_LIST : NavigationHelper.POST_LIST);
         }
 
         /// <summary>
@@ -212,7 +221,7 @@ namespace WpfOJT.App.Views.User
         /// Validate password inputs
         /// </summary>
         /// <returns></returns>
-        private bool validatePassInput()
+        private bool ValidatePasswordInput()
         {
             bool result = true;
             if (string.IsNullOrEmpty(User.OldPass))
@@ -241,9 +250,9 @@ namespace WpfOJT.App.Views.User
         /// <summary>
         /// Change password
         /// </summary>
-        private void ChangedPass()
+        private void ChangedPassword()
         {
-            bool validated = validatePassInput();
+            bool validated = ValidatePasswordInput();
             
             if (validated)
             {
@@ -256,7 +265,7 @@ namespace WpfOJT.App.Views.User
                     UserViewModel userViewModel = new UserViewModel();
                     userViewModel.Id = model.Id;
                     userViewModel.Password = User.Password;
-                    responseModel = _userService.ChangePass(userViewModel);
+                    responseModel = _userService.ChangePassword(userViewModel);
                     if (responseModel.MessageType == Message.SUCCESS)
                     {
                         MessageBoxHelper.showMessageBox(responseModel,Message.USER_TTL);
@@ -269,7 +278,7 @@ namespace WpfOJT.App.Views.User
                 }
                 else
                 {
-                    MessageBox.Show("Old password is incorrect.");
+                    MessageBoxHelper.validateMessageBox(Message.OLD_WRONG, Message.USER_TTL);
                 }
             }
             
@@ -470,7 +479,7 @@ namespace WpfOJT.App.Views.User
                         if (responseModel.MessageType == Message.SUCCESS)
                         {
                             MessageBoxHelper.showMessageBox(responseModel, "User");
-                            MainViewModel.Instance.PagePath = NavigationHelper.USER_LIST;
+                            Cancel();
                         }
                         else
                         {

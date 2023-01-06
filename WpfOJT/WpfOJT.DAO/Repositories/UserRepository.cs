@@ -24,7 +24,7 @@ namespace WpfOJT.DAO.Repositories
         /// </summary>
         /// <param name="model"></param>
         /// <returns>The <see cref="ResponseModel"/>.</returns>
-        public ResponseModel ChangePass(User model)
+        public ResponseModel ChangePassword(User model)
         {
             ResponseModel responseModel = new ResponseModel();
             try
@@ -160,12 +160,21 @@ namespace WpfOJT.DAO.Repositories
             ResponseModel responseModel = new ResponseModel();
             try
             {
-                model.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
-                model.CreatedDate = DateTime.Now;
-                _context.Add(model);
-                _context.SaveChanges();
-                responseModel.Message = Message.SAVE_SUCCESS;
-                responseModel.MessageType = Message.SUCCESS;
+                var exitUser = _context.Users.FirstOrDefault(x => x.Email == model.Email);
+                if (exitUser == null)
+                {
+                    model.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
+                    model.CreatedDate = DateTime.Now;
+                    _context.Add(model);
+                    _context.SaveChanges();
+                    responseModel.Message = Message.SAVE_SUCCESS;
+                    responseModel.MessageType = Message.SUCCESS;
+                }
+                else
+                {
+                    responseModel.Message = Message.EMAIL_EXIST;
+                    responseModel.MessageType = Message.EXIST;
+                }
             }
             catch(Exception ex)
             {
@@ -186,21 +195,31 @@ namespace WpfOJT.DAO.Repositories
             try
             {
                 var currentUser = _context.Users.FirstOrDefault(x => x.Id == model.Id);
-                currentUser.FirstName = model.FirstName;
-                currentUser.LastName = model.LastName;
-                currentUser.Email = model.Email;
-                currentUser.PhoneNo = model.PhoneNo;
-                currentUser.Address = model.Address;
-                currentUser.Role = model.Role;
-                currentUser.Dob = model.Dob;
-                currentUser.IsActive = model.IsActive;
-                currentUser.UpdatedDate = DateTime.Now;
-                currentUser.UpdatedUserId = model.UpdatedUserId;
-                _context.Users.Update(currentUser);
-                _context.SaveChanges();
 
-                responseModel.Message = Message.UPDATE_SUCCESS;
-                responseModel.MessageType = Message.SUCCESS;
+                var emailExist = _context.Users.FirstOrDefault(x => x.Id != model.Id && x.Email == model.Email);
+                if (emailExist == null)
+                {
+                    currentUser.FirstName = model.FirstName;
+                    currentUser.LastName = model.LastName;
+                    currentUser.Email = model.Email;
+                    currentUser.PhoneNo = model.PhoneNo;
+                    currentUser.Address = model.Address;
+                    currentUser.Role = model.Role;
+                    currentUser.Dob = model.Dob;
+                    currentUser.IsActive = model.IsActive;
+                    currentUser.UpdatedDate = DateTime.Now;
+                    currentUser.UpdatedUserId = model.UpdatedUserId;
+                    _context.Users.Update(currentUser);
+                    _context.SaveChanges();
+
+                    responseModel.Message = Message.UPDATE_SUCCESS;
+                    responseModel.MessageType = Message.SUCCESS;
+                }
+                else
+                {
+                    responseModel.Message = Message.EMAIL_EXIST;
+                    responseModel.MessageType = Message.EXIST;
+                }
             }
             catch(Exception ex)
             {

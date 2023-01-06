@@ -3803,11 +3803,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#\\WpfOJT\\WpfOJT.DAO\\WpfOJT.DAO.csproj",
+      "projectUniqueName": "D:\\C#\\wpf\\WpfOJT\\WpfOJT.DAO\\WpfOJT.DAO.csproj",
       "projectName": "WpfOJT.DAO",
-      "projectPath": "D:\\C#\\WpfOJT\\WpfOJT.DAO\\WpfOJT.DAO.csproj",
+      "projectPath": "D:\\C#\\wpf\\WpfOJT\\WpfOJT.DAO\\WpfOJT.DAO.csproj",
       "packagesPath": "C:\\Users\\WaiThuraTun\\.nuget\\packages\\",
-      "outputPath": "D:\\C#\\WpfOJT\\WpfOJT.DAO\\obj\\",
+      "outputPath": "D:\\C#\\wpf\\WpfOJT\\WpfOJT.DAO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\WaiThuraTun\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3824,8 +3824,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\C#\\WpfOJT\\WpfOJT.Entities\\WpfOJT.Entities.csproj": {
-              "projectPath": "D:\\C#\\WpfOJT\\WpfOJT.Entities\\WpfOJT.Entities.csproj"
+            "D:\\C#\\wpf\\WpfOJT\\WpfOJT.Entities\\WpfOJT.Entities.csproj": {
+              "projectPath": "D:\\C#\\wpf\\WpfOJT\\WpfOJT.Entities\\WpfOJT.Entities.csproj"
             }
           }
         }

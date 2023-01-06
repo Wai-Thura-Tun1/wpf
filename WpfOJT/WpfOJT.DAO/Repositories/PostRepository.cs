@@ -174,12 +174,12 @@ namespace WpfOJT.DAO.Repositories
         /// <param name="id"></param>
         /// <param name="sheet"></param>
         /// <returns>The <see cref="ResponseModel"/>.</returns>
-        public ResponseModel Upload(int r, int c,int id, ExcelWorksheet sheet)
+        public ResponseModel Upload(int rows,int id, ExcelWorksheet sheet)
         {
             ResponseModel responseModel = new ResponseModel();
             try
             {
-                for(int row = 2; row <= r; row++)
+                for(int row = 2; row <= rows; row++)
                 {
                     Post postModel = new Post();
                     postModel.Title = sheet.Cells[row, 1].Value.ToString();

@@ -49,6 +49,6 @@ namespace WpfOJT.Services.IServices
         /// </summary>
         /// <param name="model"></param>
         /// <returns>The <see cref="ResponseModel"/>.</returns>
-        ResponseModel ChangePass(UserViewModel model);
+        ResponseModel ChangePassword(UserViewModel model);
     }
 }

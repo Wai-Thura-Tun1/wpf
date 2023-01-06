@@ -51,6 +51,6 @@ namespace WpfOJT.DAO.IRepositories
         /// </summary>
         /// <param name="model"></param>
         /// <returns>The <see cref="ResponseModel"/>.</returns>
-        ResponseModel ChangePass(User Model);
+        ResponseModel ChangePassword(User Model);
     }
 }

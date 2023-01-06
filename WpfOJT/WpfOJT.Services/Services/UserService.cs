@@ -37,9 +37,9 @@ namespace WpfOJT.Services.Services
         /// </summary>
         /// <param name="model"></param>
         /// <returns>The <see cref="ResponseModel"/>.</returns>
-        public ResponseModel ChangePass(UserViewModel model)
+        public ResponseModel ChangePassword(UserViewModel model)
         {
-            return _userRepository.ChangePass(_mapper.Map<User>(model));
+            return _userRepository.ChangePassword(_mapper.Map<User>(model));
         }
 
         /// <summary>

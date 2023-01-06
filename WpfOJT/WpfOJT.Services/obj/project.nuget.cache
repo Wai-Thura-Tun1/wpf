@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0Nc742iqu5PmtdhI/c8+osEPbSFlUl0XaZPth7Vs+n1JfILo+lYlEIBDBycEWjInF2zgD3Lu6xQNrwSrDU2yKA==",
+  "dgSpecHash": "P1pBf/8cUfhwh6bZYFlAPMEG2r6eutovW3G+Z8EBI3lnVWqN9YpQhK336DNdF0BtmInXSK2T+jxRPBRrWFLuwA==",
   "success": true,
-  "projectFilePath": "D:\\C#\\WpfOJT\\WpfOJT.Services\\WpfOJT.Services.csproj",
+  "projectFilePath": "D:\\C#\\wpf\\WpfOJT\\WpfOJT.Services\\WpfOJT.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\WaiThuraTun\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\WaiThuraTun\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",

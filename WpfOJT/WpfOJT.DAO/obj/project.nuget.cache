@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Aw8f3c3MUVJ7iNzmRLvCjaCsTBsiCtpFtNRsbMw+DBkXBMZZ/phGx+5lR2Vv7YZLZBaMjaw0toEpcN5jgC7gFg==",
+  "dgSpecHash": "GiNkvxEo6pEFxgjY2mso0UWiLnjwj4E/TujR+TmhrJxUGAF0BVwOSx29zJqXM2w8TnEvXvPH3TrdqRqNJx5v9g==",
   "success": true,
-  "projectFilePath": "D:\\C#\\WpfOJT\\WpfOJT.DAO\\WpfOJT.DAO.csproj",
+  "projectFilePath": "D:\\C#\\wpf\\WpfOJT\\WpfOJT.DAO\\WpfOJT.DAO.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\WaiThuraTun\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\WaiThuraTun\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

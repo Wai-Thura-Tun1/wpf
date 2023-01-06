@@ -54,6 +54,6 @@ namespace WpfOJT.Services.IServices
         /// <param name="id"></param>
         /// <param name="sheet"></param>
         /// <returns>The <see cref="ResponseModel"/>.</returns>
-        ResponseModel Upload(int r, int c,int id, ExcelWorksheet sheet);
+        ResponseModel Upload(int rows,int id, ExcelWorksheet sheet);
     }
 }

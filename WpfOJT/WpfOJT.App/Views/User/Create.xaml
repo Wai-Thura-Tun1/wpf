@@ -205,7 +205,7 @@
                             Grid.Column="1"
                             Grid.ColumnSpan="5"
                             Orientation="Horizontal"
-                            HorizontalAlignment="Right">
+                            HorizontalAlignment="Center">
                         <Button Width="100"
                             Content="Save"
                             Background="Blue"
@@ -215,7 +215,7 @@
                             Content="Cancel"
                             Background="Blue"
                             Command="{Binding Path=CancelCommand}"
-                            Margin="15,0,20,0"/>
+                            Margin="15,0,0,0"/>
                     </StackPanel>
                 </Grid>
             </StackPanel>

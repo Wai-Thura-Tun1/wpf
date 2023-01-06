@@ -94,9 +94,9 @@ namespace WpfOJT.Services.Services
         /// <param name="id"></param>
         /// <param name="sheet"></param>
         /// <returns>The <see cref="ResponseModel"/>.</returns>
-        public ResponseModel Upload(int r, int c, int id,ExcelWorksheet sheet)
+        public ResponseModel Upload(int rows,int id,ExcelWorksheet sheet)
         {
-            return _postRepository.Upload(r, c, id,sheet);
+            return _postRepository.Upload(rows,id,sheet);
         }
     }
 }

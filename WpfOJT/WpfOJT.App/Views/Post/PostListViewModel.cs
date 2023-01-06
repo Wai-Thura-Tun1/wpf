@@ -10,6 +10,7 @@ using WpfOJT.Services.IServices;
 using WpfOJT.Services.Services;
 using OfficeOpenXml;
 using System.IO;
+using Microsoft.Win32;
 using System.Linq;
 
 namespace WpfOJT.App.Views.Post
@@ -33,6 +34,10 @@ namespace WpfOJT.App.Views.Post
         /// Define the _postService
         /// </summary>
         private IPostService _postService;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public PostListViewModel()
         {
             Post = new PostModel();
@@ -41,6 +46,10 @@ namespace WpfOJT.App.Views.Post
             GetAll("");
         }
 
+        /// <summary>
+        /// Constructor for Post Edit Page 
+        /// </summary>
+        /// <param name="id"></param>
         public PostListViewModel(int id)
         {
             Post = new PostModel();
@@ -52,7 +61,7 @@ namespace WpfOJT.App.Views.Post
         /// <summary>
         /// Define the _createPostCommand
         /// </summary>
-        private ICommand _createPostCommand;
+        private ICommand _createCommand;
 
         /// <summary>
         /// Define the _saveCommand
@@ -144,15 +153,15 @@ namespace WpfOJT.App.Views.Post
         /// <summary>
         /// Define the CreatePostCommand
         /// </summary>
-        public ICommand CreatePostCommand
+        public ICommand CreateCommand
         {
             get
             {
-                if (_createPostCommand == null)
+                if (_createCommand == null)
                 {
-                    _createPostCommand = new RelayCommand((param) => New(), null);
+                    _createCommand = new RelayCommand((param) => New(), null);
                 }
-                return _createPostCommand;
+                return _createCommand;
             }
         }
 
@@ -183,30 +192,43 @@ namespace WpfOJT.App.Views.Post
         /// <summary>
         /// Export post data into excel file
         /// </summary>
-        private void Download()
+        public void Download()
         {
-            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads\\posts.xlsx";
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            using(ExcelPackage package = new ExcelPackage())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = false;
+            openFileDialog.FileName = "";
+            openFileDialog.Filter = "Folders|\n";
+            openFileDialog.CheckFileExists = false;
+            openFileDialog.CheckPathExists = true;
+            if(openFileDialog.ShowDialog() == true)
             {
-                var model = _postService.GetAll(userID, "");
-                ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Posts");
-                worksheet.Cells[1, 1].Value = "Title";
-                worksheet.Cells[1, 2].Value = "Description";
-                worksheet.Cells[1, 3].Value = "Status";
-                worksheet.Cells[1, 4].Value = "Created_Username";
-                worksheet.Cells[1, 6].Value = "Created_Date";
-                model.Posts.Select((post, index) => new { Index = index, Value = post }).ToList().ForEach(item =>
+                string path = openFileDialog.FileName + ".xlsx";
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                using (ExcelPackage package = new ExcelPackage())
                 {
-                    worksheet.Cells[item.Index + 2, 1].Value = item.Value.Title;
-                    worksheet.Cells[item.Index + 2, 2].Value = item.Value.Description;
-                    worksheet.Cells[item.Index + 2, 3].Value = item.Value.IsPublished ? "Published" : "Unpublished";
-                    worksheet.Cells[item.Index + 2, 4].Value = item.Value.CreatedUserName;
-                    worksheet.Cells[item.Index + 2, 6].Value = item.Value.sCreatedDate;
-                });
-                package.SaveAs(new FileInfo(filePath));
+                    var model = _postService.GetAll(userID, "");
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Posts");
+                    worksheet.Cells[1, 1].Value = "Title";
+                    worksheet.Cells[1, 2].Value = "Description";
+                    worksheet.Cells[1, 3].Value = "Status";
+                    worksheet.Cells[1, 4].Value = "Created_Username";
+                    worksheet.Cells[1, 6].Value = "Created_Date";
+                    model.Posts.Select((post, index) => new { Index = index, Value = post }).ToList().ForEach(item =>
+                    {
+                        worksheet.Cells[item.Index + 2, 1].Value = item.Value.Title;
+                        worksheet.Cells[item.Index + 2, 2].Value = item.Value.Description;
+                        worksheet.Cells[item.Index + 2, 3].Value = item.Value.IsPublished ? "Published" : "Unpublished";
+                        worksheet.Cells[item.Index + 2, 4].Value = item.Value.CreatedUserName;
+                        worksheet.Cells[item.Index + 2, 6].Value = item.Value.sCreatedDate;
+                    });
+                    package.SaveAs(new FileInfo(path));
+                    MessageBox.Show("Post data have been saved into selected file.");
+                }
             }
+
         }
+
+
 
         /// <summary>
         /// Delete post
@@ -244,8 +266,7 @@ namespace WpfOJT.App.Views.Post
                 PostViewModel postViewModel = new PostViewModel();
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
                 int rows =worksheet.Dimension.Rows;
-                int columns = worksheet.Dimension.Columns;
-                responseModel = _postService.Upload(rows, columns,userID,worksheet);
+                responseModel = _postService.Upload(rows,userID,worksheet);
                 if (responseModel.MessageType == Message.SUCCESS)
                 {
                     MessageBoxHelper.showMessageBox(responseModel,Message.POST_TTL);
